@@ -1,5 +1,6 @@
 version: '2'
 services:
+ 
   plex:
     container_name: plex
     image: plexinc/pms-docker
@@ -15,11 +16,11 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
     environment:
-      - TZ=${timezone}
-      - PLEX_CLAIM=${claimToken}
-      - ADVERTISE_IP=http://${hostIPAddress}:32400/
-    hostname: ${hostname}
+      - TZ=${TZ}
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - ADVERTISE_IP=http://${HOST_IP}:32400/
+    hostname: ${HOSTNAME}
     volumes:
-      - ${path/to/plex/database}:/config
-      - ${path/to/transcode/temp}:/transcode
-      - ${path/to/media}:/data
+      - ${PATH_DB}:/config
+      - ${PATH_TEMP}:/transcode
+      - ${PATH_MEDIA}:/data
